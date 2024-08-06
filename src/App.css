@@ -21,13 +21,6 @@ body,
   }
 }
 
-@keyframes population-up {
-  to {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
 .title {
   margin-top: 20vh;
 }
@@ -59,7 +52,4 @@ body,
 
 .population {
   font-size: 8vw;
-  opacity: 0.1;
-  transform: translateY(30%);
-  animation: population-up 1s ease forwards;
 }
