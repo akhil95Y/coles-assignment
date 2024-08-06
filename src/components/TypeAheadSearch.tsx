@@ -6,6 +6,7 @@ let data: CountryWithPopulation[] = [];
 let dropdownElement: HTMLElement | null;
 
 const TypeAheadSearch = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<CountryWithPopulation>();
   const [inputValue, setInputValue] = useState<string>("");
   const [suggestions, setSuggestion] = useState<CountryWithPopulation[]>([]);
@@ -23,6 +24,13 @@ const TypeAheadSearch = () => {
       dropdownElement?.classList.remove("show");
     }
   }, [suggestions]);
+
+  useEffect(() => {
+    document.getElementsByClassName("active")[0]?.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+    });
+  }, [selectedIndex]);
 
   const showSuggestions = (value: string) => {
     let tempArray = [];
@@ -48,6 +56,25 @@ const TypeAheadSearch = () => {
     setSuggestion([]);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      setSelectedIndex((prev) =>
+        prev === suggestions.length - 1 ? 0 : prev + 1
+      );
+    } else if (e.key === "ArrowUp") {
+      setSelectedIndex((prev) =>
+        prev === 0 ? suggestions.length - 1 : prev - 1
+      );
+      console.log(selectedIndex);
+    } else if (e.key === "Enter") {
+      if (suggestions.length > 0) {
+        setValue(suggestions[selectedIndex]);
+      }
+    } else {
+      setSelectedIndex(0);
+    }
+  };
+
   return (
     <div className="searchBar w-100 h-100 d-flex flex-column flex-grow-1">
       <form
@@ -63,6 +90,7 @@ const TypeAheadSearch = () => {
           placeholder="Search"
           aria-label="Search"
           value={inputValue}
+          onKeyDown={handleKeyDown}
           onChange={(e) =>
             showSuggestions((e.target as HTMLInputElement).value)
           }
@@ -75,7 +103,9 @@ const TypeAheadSearch = () => {
             {suggestions.map((e, i) => {
               return (
                 <li
-                  className={`dropdown-item ${i === 0 ? "active" : ""}`}
+                  className={`dropdown-item ${
+                    i === selectedIndex ? "active" : ""
+                  }`}
                   key={i}
                   onClick={(event) => {
                     setValue(e);
