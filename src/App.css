@@ -3,6 +3,13 @@ body,
 #app,
 #root,
 #app > div {
+  background: rgb(255, 246, 105);
+  background: linear-gradient(
+    354deg,
+    rgba(255, 246, 105, 1) 0%,
+    rgba(251, 255, 185, 0.7008053221288515) 15%,
+    rgba(147, 237, 255, 1) 91%
+  );
   height: 100%;
   background-color: rgb(254, 255, 233);
 }
@@ -22,7 +29,7 @@ body,
 }
 
 .title {
-  margin-top: 7%;
+  margin-top: 20vh;
 }
 
 .searchBar {
@@ -36,12 +43,16 @@ body,
 .dropdown-menu {
   overflow: hidden;
   overflow-y: auto;
-  max-height: calc(100vh - 250px);
+  max-height: calc(80% + 40vh);
   cursor: pointer;
 }
+.dropdown-menu-dark {
+  --bs-dropdown-link-active-bg: #008299 !important;
+}
 
-.countryName {
+.smallTitle {
   font-size: 4vw;
+  text-align: center;
 }
 
 .population {
