@@ -27,7 +27,7 @@ const TypeAheadSearch = () => {
   const showSuggestions = (value: string) => {
     let tempArray = [];
     if (!dropdownElement) {
-      dropdownElement = document.getElementById("dropdown");
+      dropdownElement = document.getElementById("suggestion-dropdown");
     }
     if (value) {
       for (let item of data) {
@@ -35,6 +35,8 @@ const TypeAheadSearch = () => {
           tempArray.push(item);
         }
       }
+    } else {
+      setSelectedOption({ country: "", population: "" });
     }
     setInputValue(value);
     setSuggestion(tempArray);
@@ -48,7 +50,13 @@ const TypeAheadSearch = () => {
 
   return (
     <div className="searchBar w-100 h-100 d-flex flex-column flex-grow-1">
-      <form className="d-flex flex-column w-100" role="search">
+      <form
+        className="d-flex flex-column w-100"
+        role="search"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
           className="form-control me-2 dropdown-toggle"
           type="search"
@@ -60,13 +68,16 @@ const TypeAheadSearch = () => {
           }
         ></input>
         <div>
-          <ul className="dropdown-menu dropdown-menu-dark w-100" id="dropdown">
+          <ul
+            className="dropdown-menu dropdown-menu-dark w-100"
+            id="suggestion-dropdown"
+          >
             {suggestions.map((e, i) => {
               return (
                 <li
-                  className="dropdown-item"
+                  className={`dropdown-item ${i === 0 ? "active" : ""}`}
                   key={i}
-                  onClick={() => {
+                  onClick={(event) => {
                     setValue(e);
                   }}
                 >
