@@ -10,7 +10,7 @@ body,
     rgba(102, 202, 215, 0.701) 36%,
     rgb(201, 242, 255) 97%
   );
-  height: 100%;
+  /* height: auto; */
   /* background-color: rgb(254, 255, 233); */
 }
 
