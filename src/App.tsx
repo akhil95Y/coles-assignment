@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TypeAheadSearch from "./components/TypeAheadSearch";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="justify-content-center d-flex flex-column align-items-center min-vh-100"
+      data-bs-theme="dark"
+    >
+      <div className="title h-10 w-100 col-12 d-flex justify-content-center">
+        <h1 className="h1">Search Countries for population</h1>
+      </div>
+
+      <div className="w-50 col-6 pt-1 h-100 d-flex flex-grow-1 justify-content-center">
+        <TypeAheadSearch></TypeAheadSearch>
+      </div>
     </div>
   );
 }

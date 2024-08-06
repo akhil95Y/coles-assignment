@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+html,
+body,
+#app,
+#root,
+#app > div {
+  height: 100%;
+  background-color: rgb(254, 255, 233);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes search-up {
   to {
-    transform: rotate(360deg);
+    transform: translateY(0%);
+    opacity: 1;
   }
+}
+
+@keyframes population-up {
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.title {
+  margin-top: 7%;
+}
+
+.searchBar {
+  transition: 1s;
+  margin-top: 8%;
+  opacity: 0.2;
+  transform: translateY(30%);
+  animation: search-up 1s ease forwards;
+}
+
+.dropdown-menu {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+  cursor: pointer;
+}
+
+.countryName {
+  font-size: 4vw;
+}
+
+.population {
+  font-size: 10vw;
+  opacity: 0.1;
+  transform: translateY(30%);
+  animation: population-up 1s ease forwards;
 }
