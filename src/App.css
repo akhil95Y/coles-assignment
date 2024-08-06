@@ -26,4 +26,6 @@ body,
   overflow: hidden;
   overflow-y: auto;
   max-height: calc(100vh - 250px);
+  animation: smooth-up 1s ease forwards;
+  cursor: pointer;
 }

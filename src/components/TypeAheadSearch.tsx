@@ -5,6 +5,7 @@ let data: countryWithPopulation[] = [];
 let dropdownElement: HTMLElement | null;
 
 const TypeAheadSearch = () => {
+  const [inputValue, setInputValue] = useState<string>("");
   const [suggestions, setSuggestion] = useState<countryWithPopulation[]>([]);
 
   useEffect(() => {
@@ -33,7 +34,13 @@ const TypeAheadSearch = () => {
         }
       }
     }
+    setInputValue(value);
     setSuggestion(tempArray);
+  };
+
+  const setValue = (value: string) => {
+    setInputValue(value);
+    setSuggestion([]);
   };
 
   return (
@@ -44,7 +51,7 @@ const TypeAheadSearch = () => {
           type="search"
           placeholder="Search"
           aria-label="Search"
-          data-bs-toggle="dropdown"
+          value={inputValue}
           onChange={(e) =>
             showSuggestions((e.target as HTMLInputElement).value)
           }
@@ -53,8 +60,14 @@ const TypeAheadSearch = () => {
           <ul className="dropdown-menu dropdown-menu-dark w-100" id="dropdown">
             {suggestions.map((e, i) => {
               return (
-                <li key={i}>
-                  <a className="dropdown-item">{e.country}</a>
+                <li
+                  className="dropdown-item"
+                  key={i}
+                  onClick={() => {
+                    setValue(e.country);
+                  }}
+                >
+                  {e.country}
                 </li>
               );
             })}
