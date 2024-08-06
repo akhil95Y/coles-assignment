@@ -1,5 +1,4 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
 import TypeAheadSearch from "./components/TypeAheadSearch";
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
       className="justify-content-center d-flex flex-column align-items-center min-vh-100"
       data-bs-theme="dark"
     >
-      <div className="h-10 w-100 col-12 d-flex justify-content-center mt-5">
+      <div className="title h-10 w-100 col-12 d-flex justify-content-center">
         <h1 className="h1">Search Countries for population</h1>
       </div>
 

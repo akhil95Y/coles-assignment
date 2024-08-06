@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { countryWithPopulation, getSuggestions } from "../api/api-services";
+import { CountryWithPopulation, getSuggestions } from "../api/api-services";
+import CountryContainer from "./CountryContainer";
 
-let data: countryWithPopulation[] = [];
+let data: CountryWithPopulation[] = [];
 let dropdownElement: HTMLElement | null;
 
 const TypeAheadSearch = () => {
+  const [selectedOption, setSelectedOption] = useState<CountryWithPopulation>();
   const [inputValue, setInputValue] = useState<string>("");
-  const [suggestions, setSuggestion] = useState<countryWithPopulation[]>([]);
+  const [suggestions, setSuggestion] = useState<CountryWithPopulation[]>([]);
 
   useEffect(() => {
     getSuggestions().then((res) => {
@@ -38,8 +40,9 @@ const TypeAheadSearch = () => {
     setSuggestion(tempArray);
   };
 
-  const setValue = (value: string) => {
-    setInputValue(value);
+  const setValue = (value: CountryWithPopulation) => {
+    setSelectedOption(value);
+    setInputValue(value.country);
     setSuggestion([]);
   };
 
@@ -64,7 +67,7 @@ const TypeAheadSearch = () => {
                   className="dropdown-item"
                   key={i}
                   onClick={() => {
-                    setValue(e.country);
+                    setValue(e);
                   }}
                 >
                   {e.country}
@@ -74,6 +77,8 @@ const TypeAheadSearch = () => {
           </ul>
         </div>
       </form>
+
+      <CountryContainer value={selectedOption}></CountryContainer>
     </div>
   );
 };

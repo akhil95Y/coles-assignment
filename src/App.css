@@ -7,25 +7,46 @@ body,
   background-color: rgb(254, 255, 233);
 }
 
-@keyframes smooth-up {
+@keyframes search-up {
   to {
     transform: translateY(0%);
     opacity: 1;
   }
 }
 
+@keyframes population-up {
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.title {
+  margin-top: 7%;
+}
+
 .searchBar {
   transition: 1s;
-  margin-top: 10%;
+  margin-top: 8%;
   opacity: 0.2;
   transform: translateY(30%);
-  animation: smooth-up 1s ease forwards;
+  animation: search-up 1s ease forwards;
 }
 
 .dropdown-menu {
   overflow: hidden;
   overflow-y: auto;
   max-height: calc(100vh - 250px);
-  animation: smooth-up 1s ease forwards;
   cursor: pointer;
+}
+
+.countryName {
+  font-size: 4vw;
+}
+
+.population {
+  font-size: 10vw;
+  opacity: 0.1;
+  transform: translateY(30%);
+  animation: population-up 1s ease forwards;
 }
