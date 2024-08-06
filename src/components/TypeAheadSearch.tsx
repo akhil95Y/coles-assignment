@@ -27,7 +27,7 @@ const TypeAheadSearch = () => {
   const showSuggestions = (value: string) => {
     let tempArray = [];
     if (!dropdownElement) {
-      dropdownElement = document.getElementById("dropdown");
+      dropdownElement = document.getElementById("suggestion-dropdown");
     }
     if (value) {
       for (let item of data) {
@@ -35,6 +35,8 @@ const TypeAheadSearch = () => {
           tempArray.push(item);
         }
       }
+    } else {
+      setSelectedOption({ country: "", population: "" });
     }
     setInputValue(value);
     setSuggestion(tempArray);
@@ -58,15 +60,21 @@ const TypeAheadSearch = () => {
           onChange={(e) =>
             showSuggestions((e.target as HTMLInputElement).value)
           }
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
         ></input>
         <div>
-          <ul className="dropdown-menu dropdown-menu-dark w-100" id="dropdown">
+          <ul
+            className="dropdown-menu dropdown-menu-dark w-100"
+            id="suggestion-dropdown"
+          >
             {suggestions.map((e, i) => {
               return (
                 <li
-                  className="dropdown-item"
+                  className={`dropdown-item ${i === 0 ? "active" : ""}`}
                   key={i}
-                  onClick={() => {
+                  onClick={(event) => {
                     setValue(e);
                   }}
                 >

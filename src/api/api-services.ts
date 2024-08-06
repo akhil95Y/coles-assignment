@@ -2,7 +2,7 @@ import data from "./data.json";
 
 export interface CountryWithPopulation {
   country: string;
-  population: number;
+  population: number | string;
 }
 
 export const getSuggestions = () => {

@@ -11,7 +11,7 @@ body,
     rgb(201, 242, 255) 97%
   );
   height: 100%;
-  background-color: rgb(254, 255, 233);
+  /* background-color: rgb(254, 255, 233); */
 }
 
 @keyframes search-up {
@@ -46,6 +46,7 @@ body,
   max-height: calc(40vh);
   cursor: pointer;
 }
+
 .dropdown-menu-dark {
   --bs-dropdown-link-active-bg: #008299 !important;
 }
