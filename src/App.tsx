@@ -4,7 +4,10 @@ import TypeAheadSearch from "./components/TypeAheadSearch";
 
 function App() {
   return (
-    <div className="justify-content-center d-flex flex-column align-items-center min-vh-100">
+    <div
+      className="justify-content-center d-flex flex-column align-items-center min-vh-100"
+      data-bs-theme="dark"
+    >
       <div className="h-10 w-100">
         <Navbar></Navbar>
       </div>

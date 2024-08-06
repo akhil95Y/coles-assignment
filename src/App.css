@@ -4,18 +4,26 @@ body,
 #root,
 #app > div {
   height: 100%;
+  background-color: rgb(254, 255, 233);
 }
 
 @keyframes smooth-up {
   to {
-    margin-top: 20%;
+    transform: translateY(0%);
     opacity: 1;
   }
 }
 
 .searchBar {
   transition: 1s;
-  margin-top: 30%;
+  margin-top: 10%;
   opacity: 0.2;
+  transform: translateY(30%);
   animation: smooth-up 1s ease forwards;
+}
+
+.dropdown-menu {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
 }
