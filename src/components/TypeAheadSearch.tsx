@@ -50,7 +50,13 @@ const TypeAheadSearch = () => {
 
   return (
     <div className="searchBar w-100 h-100 d-flex flex-column flex-grow-1">
-      <form className="d-flex flex-column w-100" role="search">
+      <form
+        className="d-flex flex-column w-100"
+        role="search"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
           className="form-control me-2 dropdown-toggle"
           type="search"
@@ -60,9 +66,6 @@ const TypeAheadSearch = () => {
           onChange={(e) =>
             showSuggestions((e.target as HTMLInputElement).value)
           }
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
         ></input>
         <div>
           <ul
